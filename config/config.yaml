@@ -1,0 +1,27 @@
+outpur_dir: 'runs/save'
+log_dir: 'runs/log'
+device: 'cuda:0'
+seed: 42
+num_workers: 4
+# Turning on when the image size does not change during training can speed up training
+cudnn_benchmark: True
+# When evaluating the performance of the SR model, whether to verify only the Y channel image data
+only_test_y_channel: True
+
+model:
+    # Model architecture name
+    d_arch_name: "discriminator"
+    g_arch_name: "srresnet_x4"
+    # Model arch config
+    crop_size: 64
+    in_channels: 3
+    out_channels: 3
+    channels: 64
+    num_rcb:  16
+    # Test upscale factor
+    upscale_factor: 4
+    # Experiment name, easy to save weights and log files
+    exp_name: "SRGAN_x4-DIV2K"
+
+train:
+    
