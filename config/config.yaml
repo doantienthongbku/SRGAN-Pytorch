@@ -11,9 +11,11 @@ only_test_y_channel: True
 dataset:
     # Dataset name
     name: "DIV2K"
-    # Dataset address
+    image_format: "png"
+    # Dataset address after preprocessing (cropping, scaling, etc.)
     train_hr_images_dir: "../datasets/DIV2K_train_HR"
     valid_hr_images_dir: "../datasets/DIV2K_valid_HR"
+    # test dataset 
     test_hr_images_dir: "../validation_data/Set5"
     test_lr_images_dir: "../validation_data/LRbicx4"
     # Dataset parameters

@@ -19,7 +19,6 @@ __all__ = [
     "PrefetchGenerator", "PrefetchDataLoader", "CPUPrefetcher", "CUDAPrefetcher",
 ]
 
-
 class TrainValidImageDataset(Dataset):
     
     def __init__(self, images_dir: str = "./datasets", crop_size: int = 96,
