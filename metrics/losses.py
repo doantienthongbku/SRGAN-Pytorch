@@ -27,4 +27,20 @@ class ContentLoss(nn.Module):
         loss = F.mse_loss(sr_image_feature, hr_image_feature)
         
         return loss
-        
+    
+
+def define_loss(config):
+    pixel_loss = nn.MSELoss()
+    content_loss = ContentLoss(
+        feature_model_extractor_node=config["feature_model_extractor_node"],
+        feature_model_normalize_mean=config["feature_model_normalize_mean"],
+        feature_model_normalize_std=config["feature_model_normalize_std"]
+    )
+    adversarial_loss = nn.BCEWithLogitsLoss()
+    
+    # Transfer to device
+    pixel_loss = pixel_loss.to(config["device"])
+    content_loss = content_loss.to(config["device"])
+    adversarial_loss = adversarial_loss.to(config["device"])
+    
+    return pixel_loss, content_loss, adversarial_loss
