@@ -9,8 +9,8 @@ from tqdm import tqdm
 
 # input variables
 IMAGE_FORMAT = 'png'
-IMAGE_SIZE = 224
-STEP_SIZE = 112
+IMAGE_SIZE = 112
+STEP_SIZE = 56
 SOURCE_DATASET_DIR = "/home/lake/hehehe/DIV2K_raw/DIV2K_valid_HR"
 TARGET_DATASET_DIR = "/home/lake/hehehe/datasets/DIV2K_valid_HR"
 

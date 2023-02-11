@@ -28,7 +28,7 @@ config = read_cfg('config/config.yaml')
 
 print("Building dataset, model, optimizer, criterion, and scheduler ...")
 # load datasets
-train_prefetcher, valid_prefetcher, test_prefetcher = load_dataset(config)
+train_prefetcher, valid_prefetcher, _ = load_dataset(config)
 # build model
 g_model, d_model = build_model(config)
 # define criterion

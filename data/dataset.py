@@ -69,6 +69,9 @@ class TestImageDataset(Dataset):
         return len(self.test_hr_image_path_list)
     
     def __getitem__(self, index):
+        # get image name
+        image_name = os.path.basename(self.test_hr_image_path_list[index])
+        
         # Get image from source path
         hr_image = cv2.imread(self.test_hr_image_path_list[index]).astype(np.float32) / 255.
         lr_image = cv2.imread(self.test_lr_image_path_list[index]).astype(np.float32) / 255.
@@ -82,7 +85,7 @@ class TestImageDataset(Dataset):
         hr_image_tensor = imgproc.image_to_tensor(hr_image, False, False)
         lr_image_tensor = imgproc.image_to_tensor(lr_image, False, False)
         
-        return {"lr": lr_image_tensor, "hr": hr_image_tensor}
+        return {"lr": lr_image_tensor, "hr": hr_image_tensor, "name": image_name}
     
     
 class PrefetchGenerator(threading.Thread):

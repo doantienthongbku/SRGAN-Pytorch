@@ -54,11 +54,11 @@ def load_dataset(config):
         num_workers=config['dataset']['num_workers'], pin_memory=True, drop_last=True, persistent_workers=True
     )
     valid_loader = DataLoader(
-        valid_dataset, batch_size=1, shuffle=False, num_workers=1,
-        pin_memory=True, drop_last=False, persistent_workers=True
+        valid_dataset, batch_size=1, shuffle=False,
+        num_workers=config['dataset']['num_workers'], pin_memory=True, drop_last=False, persistent_workers=True
     )
     test_loader = DataLoader(
-        valid_dataset, batch_size=1, shuffle=False, num_workers=1,
+        test_dataset, batch_size=1, shuffle=False, num_workers=1,
         pin_memory=True, drop_last=False, persistent_workers=True
     )
     
