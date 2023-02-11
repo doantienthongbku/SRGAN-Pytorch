@@ -37,9 +37,9 @@ class TrainValidImageDataset(Dataset):
         image = cv2.imread(self.image_path_list[index]).astype(np.float32) / 255.
 
         # Image processing operations
-        if self.mode == "Train":
+        if self.mode == "train":
             hr_crop_image = imgproc.random_crop(image, self.crop_size)
-        elif self.mode == "Valid":
+        elif self.mode == "valid":
             hr_crop_image = imgproc.center_crop(image, self.crop_size)
         else:
             raise ValueError("Unsupported data processing model, please use `Train` or `Valid`.")

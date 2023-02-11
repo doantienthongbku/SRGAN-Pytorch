@@ -44,32 +44,33 @@ class Generator(nn.Module):
         scale_factor (int): scale factor of target
         B (int): number of residual blocks
     """
-    def __init__(self, scale_factor: int = 2, B: int = 16) -> None:
+    def __init__(self, scale_factor: int = 2, B: int = 16, channels: int = 64,
+                 in_channels: int = 3, out_channels: int = 3) -> None:
         super(Generator, self).__init__()
         upsample_block_num = int(math.log(scale_factor, 2))
         
         # first layer
         self.block1 = nn.Sequential(
-            nn.Conv2d(3, 64, kernel_size=9, stride=1, padding=4),
+            nn.Conv2d(in_channels, channels, kernel_size=9, stride=1, padding=4),
             nn.PReLU()
         )
         
         # residual blocks
-        residual_blocks = [ResidualBlock(64) for _ in range(B)]
+        residual_blocks = [ResidualBlock(channels) for _ in range(B)]
         self.residual_blocks = nn.Sequential(*residual_blocks)
         
         # second conv layer after residual blocks
         self.block2 = nn.Sequential(
-            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
-            nn.BatchNorm2d(num_features=64)
+            nn.Conv2d(channels, channels, kernel_size=3, stride=1, padding=1),
+            nn.BatchNorm2d(num_features=channels)
         )
         
-        upscale_block = [UpsampleBLock(64, 2) for _ in range(upsample_block_num)]
+        upscale_block = [UpsampleBLock(channels, 2) for _ in range(upsample_block_num)]
         self.upscale_block = nn.Sequential(*upscale_block)
         
         # final output layer
         self.block3 = nn.Sequential(
-            nn.Conv2d(64, 3, kernel_size=9, stride=1, padding=4),
+            nn.Conv2d(channels, out_channels, kernel_size=9, stride=1, padding=4),
             nn.Tanh()
         )
         
