@@ -1,6 +1,7 @@
 output_dir: 'runs/train'
 log_dir: 'runs/log'
 test_dir: 'runs/test'
+infer_dir: 'runs/infer'
 device: 'cuda:1'
 seed: 42
 # Turning on when the image size does not change during training can speed up training
@@ -16,8 +17,8 @@ dataset:
     train_hr_images_dir: "/home/lake/hehehe/datasets/DIV2K_train_HR"
     valid_hr_images_dir: "/home/lake/hehehe/datasets/DIV2K_valid_HR"
     # test dataset 
-    test_hr_images_dir: "../validation_data/Set5/GTmod12"
-    test_lr_images_dir: "../validation_data/Set5/LRbicx4"
+    test_hr_images_dir: "../validation_data/BSDS100/GTmod12"
+    test_lr_images_dir: "../validation_data/BSDS100/LRbicx4"
     # Dataset parameters
     crop_size: 96
     upscale_factor: 4
@@ -49,7 +50,7 @@ train:
     resume_d_model_weights_path: ""
     resume_g_model_weights_path: ""
     # Training epochs
-    num_epochs: 18
+    num_epochs: 20
     # Loss function weight
     pixel_weight: 1.0
     content_weight: 1.0
@@ -60,11 +61,11 @@ train:
     model_eps: 1e-8
     model_weight_decay: 1e-8
     # Dynamically adjust the learning rate policy
-    lr_scheduler_step_size: 9
+    lr_scheduler_step_size: 10
     lr_scheduler_gamma: 0.1
     # How many iterations to print the training result
-    train_print_frequency: 1
-    valid_print_frequency: 1
+    train_print_frequency: 100
+    valid_print_frequency: 100
     # Feature extraction layer parameter configuration use for content loss
     feature_model_extractor_node: "features.35"
     feature_model_normalize_mean: [0.485, 0.456, 0.406]

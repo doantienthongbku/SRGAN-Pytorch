@@ -178,5 +178,7 @@ def make_save_dir(config):
         os.makedirs(config['log_dir'])
     if not os.path.exists(config['test_dir']):
         os.makedirs(config['test_dir'])
+    if not os.path.exists(config['infer_dir']):
+        os.makedirs(config['infer_dir'])
         
     print("Save directory is created.")

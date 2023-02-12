@@ -40,6 +40,6 @@ psnr_list, ssim_list = validation(config, g_model, test_prefetcher, _,
                         _, psnr_model, ssim_model, mode="test")
 
 print("==========================SUMMARY==========================")
-print("PSNR: {:.4f} dB".format(sum(psnr_list) / len(psnr_list)))
-print("SSIM: {:.4f}".format(sum(ssim_list) / len(ssim_list)))
+print("PSNR: {:.6f} dB".format(sum(psnr_list) / len(psnr_list)))
+print("SSIM: {:.6f}".format(sum(ssim_list) / len(ssim_list)))
 
