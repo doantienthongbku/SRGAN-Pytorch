@@ -44,9 +44,9 @@ DIV2K
 comming soon ...
 
 # Result
-Source of original paper results: https://arxiv.org/pdf/1609.04802v5.pdf.The result of this project when evaluation with scale `X4` is described below here:
+Source of original paper results: https://arxiv.org/pdf/1609.04802v5.pdf. The result of this project when evaluation with scale `X4` is described below here:
 
-| Eval dataset | Eval. Mat | SRGAN (original) | SRCNN (this project) |
+| Eval dataset | Eval. Mat | SRGAN (original) | SRGAN (this project) |
 |--------------|-----------|------------------|----------------------|
 | Set5         | PSNR/SSIM | 29.40 / 0.8472   | 29.22 / 0.8464       |
 | Set14        | PSNR/SSIM | 26.02 / 0.7397   | 26.69 / 0.7315       |
